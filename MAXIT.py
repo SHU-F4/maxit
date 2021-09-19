@@ -1,6 +1,7 @@
 import numpy as np
 s1 = 0
 s2 =0
+p=0
 print("Введите количество строк")
 n=int(input())
 print("Введите количество столбцов")
@@ -43,16 +44,18 @@ while (msum!=0 or nsum!=0) and hod<2:
     b1=False
     nsum=0
     while b2==False :   #Игрок 2
+    
         for i in range (0,n):
             nsum+=a[i,k]
         if nsum!=0:
+            hod=0
             print("Игрок 2,введите координаты числа")
             q2=int(input())
             w2=int(input())
             for i in range(0,n):  
                 if q2==i and w2==k:
                     b2=True
-                    k=i
+                    p=i
             if b2==True:
                 s2+=a[q2,w2]
                 a[q2,w2]=0 
@@ -68,15 +71,16 @@ while (msum!=0 or nsum!=0) and hod<2:
         break
    
     msum=0
-    while b1== False: #игрк 1
+    while b1== False: #игрoк 1
         for j in range (0,m):
-            msum+=a[k,j]
+            msum+=a[p,j]
         if msum!=0:
+            hod=0
             print("Игрок 1,введите координаты числа")
             q=int(input())
             w=int(input())
-            for j in range(0,n):   
-                if q==k and w==j:
+            for j in range(0,m):   
+                if q==p and w==j:
                     b1=True
                     k=j
             if b1==True:
@@ -95,6 +99,6 @@ if s1==s2:
     print("Ничья!Сумма очков игрока 1-",s1,"Сумма очков игрока 2-",s2)
 else:
     if s2<s1:
-        print("Победил игрок 1,сумма его очков состваляет",s1)
+        print("Победил игрок 1,сумма его очков состваляет:",s1,",cумма очков игрока 2:",s2)
     else:
-        print("Победил игрок 2,сумма его очков состваляет",s2)
+        print("Победил игрок 2,сумма его очков состваляет:",s2,",сумма очков игрока 1:",s1)
